@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/remixicon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pep.css') }}">
 
     <title>{{ $title ?? 'Prime Elite Property' }}</title>
 
@@ -168,6 +169,8 @@
         <div class="line"></div>
     </div>
     <!-- End Lines -->
+
+    @include("widgets.modals.country_modal")
 
     <!-- Link of JS Files -->
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
