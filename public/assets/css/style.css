@@ -13887,8 +13887,8 @@ Category Area CSS
 .category-box .image {
   position: relative;
   display: inline-block;
-  height: 195px;
-  width: 195px;
+  height: 100px;
+  width: 100px;
   border-radius: 60px;
   background-color: #F1F0EB;
   text-align: center;

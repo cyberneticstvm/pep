@@ -17,7 +17,7 @@
                     <li>
                         <div class="mail-info">
                             <i class="ri-mail-line"></i>
-                            <a href="mailto:contact@primeeliteproperty.com">contact@primeeliteproperty.com</a>
+                            <a href="mailto:{{ settings()['email'] }}">{{ settings()['email'] }}</a>
                         </div>
                     </li>
                 </ul>

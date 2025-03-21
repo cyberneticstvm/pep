@@ -27,16 +27,9 @@
         <div class="loader position-absolute start-0 end-0">
             <img src="{{ asset('assets/images/favicon.png') }}" alt="favicon">
             <div class="waviy position-relative">
-                <span class="d-inline-block">P</span>
-                <span class="d-inline-block">R</span>
-                <span class="d-inline-block">I</span>
-                <span class="d-inline-block">M</span>
-                <span class="d-inline-block">E</span>
-                <span class="d-inline-block">E</span>
-                <span class="d-inline-block">L</span>
-                <span class="d-inline-block">I</span>
-                <span class="d-inline-block">T</span>
-                <span class="d-inline-block">E</span>
+                @foreach(preloaderText() as $key => $item)
+                <span class="d-inline-block">{{ $item }}</span>
+                @endforeach
             </div>
         </div>
     </div>

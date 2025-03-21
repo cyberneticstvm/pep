@@ -6,6 +6,10 @@
     height: 5% !important;
 }
 
+.top-header-call-info a {
+    color: #343a40 !important;
+}
+
 .top-header-call-info a:hover {
-    color: #1B6F58;
-  }
+    color: #1B6F58 !important;
+}
