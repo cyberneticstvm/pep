@@ -13,5 +13,5 @@ function uniqueId($model, $column)
 
 function country()
 {
-    return Country::where('code', Cookie::get('country'))->first();
+    return (Cookie::get('country')) ? Country::find(Cookie::get('country')) : Country::find(1);
 }

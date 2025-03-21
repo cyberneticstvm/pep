@@ -10,8 +10,7 @@ class WebController extends Controller
 {
     function homePage(Request $request)
     {
-        $country = Cookie::get('country');
-        if (!$country) Cookie::queue('country', Country::first()->code);
+        if (Cookie::get('country')) Cookie::queue('country', Country::first()->id);
         $title = "Prime Elite Property - Buy, Sell, Rent and Invest Premium Properties in USA";
         $desc = "";
         $keywords = "";
