@@ -36,8 +36,8 @@
 <!-- Start Navbar Area -->
 <nav class="navbar navbar-expand-xl" id="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="assets/images/logo.png" alt="logo">
+        <a class="navbar-brand" href="{{ route('index') }}">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
         </a>
         <form class="search-form">
             <input type="text" class="search-field" placeholder="Search property">
@@ -230,7 +230,7 @@
             <div class="others-option d-flex align-items-center">
                 <div class="option-item">
                     <div class="user-info">
-                        <a href="my-account.html">Log In / Register</a>
+                        <a href="{{ route('login') }}">Log In</a> / <a href="{{ route('register') }}">Register</a>
                     </div>
                 </div>
                 <div class="option-item">

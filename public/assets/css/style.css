@@ -12765,6 +12765,11 @@ img {
   height: auto;
 }
 
+.ptb-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 .ptb-120 {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -12790,7 +12795,7 @@ Default Btn Area CSS
   padding: 15px 32px;
   justify-content: center;
   align-items: center;
-  border-radius: 50px;
+  /*border-radius: 50px;*/
   background-color: #1B6F58;
   color: #ffffff;
   font-weight: 600;
@@ -16642,7 +16647,7 @@ Subscribe Area CSS
   bottom: 0;
   width: 100%;
   height: 120px;
-  background-color: #F1F0EB;
+  background-color: #000;
   z-index: -1;
 }
 
@@ -17795,7 +17800,7 @@ Profile Authentication Area CSS
 .profile-authentication-box .authentication-form .form-group .form-control {
   display: inline-block;
   width: 100%;
-  border-radius: 30px;
+  /*border-radius: 30px;*/
   border: 1px solid #ffffff;
   box-shadow: unset;
   outline: 0;

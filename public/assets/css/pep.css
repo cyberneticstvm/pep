@@ -13,3 +13,9 @@
 .top-header-call-info a:hover {
     color: #1B6F58 !important;
 }
+
+.req::after{
+    content: " *";
+    color: red;
+    font-weight: bold;
+}

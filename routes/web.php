@@ -1,14 +1,32 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web'])->group(function () {
     Route::prefix('')->controller(WebController::class)->group(function () {
-        Route::get('/', 'homePage')->name('home');
+        Route::get('/', 'homePage')->name('index');
+        Route::get('/terms-and-conditions', 'terms')->name('terms');
         Route::get('/switch/country', 'switchCountry')->name('switch.country');
+        Route::get('/refresh/captcha', 'refreshCaptcha')->name('refresh.captcha');
     });
+    Route::get('login', function () {
+        return view('account.login');
+    })->name('login');
+    Route::get('register', function () {
+        return view('account.register');
+    })->name('register');
+
+    Route::post('register', [RegisteredUserController::class, 'store']);
+});
+
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+        ->middleware(['signed', 'throttle:6,1'])
+        ->name('verification.verify');
 });
 
 /*Route::get('/dashboard', function () {

@@ -38,7 +38,21 @@
     @include("nav")
 
     @yield("content")
-
+    <!-- Start Subscribe Area -->
+    <div class="subscribe-wrap-area">
+        <div class="container" data-cues="slideInUp">
+            <div class="subscribe-wrap-inner-area">
+                <div class="subscribe-content">
+                    <h2>Subscribe To Our Newsletter</h2>
+                    <form class="subscribe-form">
+                        <input type="search" class="form-control" placeholder="Enter your email">
+                        <button type="submit" class="default-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Subscribe Area -->
     <!-- Start Footer Area -->
     <footer class="footer-area pt-120">
         <div class="container">
@@ -166,12 +180,16 @@
     @include("widgets.modals.country_modal")
 
     <!-- Link of JS Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/scrollCue.min.js') }}"></script>
     <script src="{{ asset('assets/js/fslightbox.min.js') }}"></script>
     <script src="{{ asset('assets/js/simpleParallax.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/pep.js') }}"></script>
+
+    @include("message")
 </body>
 
 </html>

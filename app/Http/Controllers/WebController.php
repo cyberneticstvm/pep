@@ -15,6 +15,11 @@ class WebController extends Controller
         return redirect()->back()->with("success", "Country switched successfully");
     }
 
+    function refreshCaptcha()
+    {
+        return response()->json(['captcha' => captcha_img('flat')]);
+    }
+
     function homePage(Request $request)
     {
         if (!Cookie::get('country')) Cookie::queue('country', Country::first()->id, time() + 60 * 60 * 24 * 365);
@@ -22,5 +27,10 @@ class WebController extends Controller
         $desc = "";
         $keywords = "";
         return view('index', compact('title', 'desc', 'keywords'));
+    }
+
+    function terms()
+    {
+        return view('terms');
     }
 }
