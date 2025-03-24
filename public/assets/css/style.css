@@ -16652,7 +16652,7 @@ Subscribe Area CSS
 }
 
 .subscribe-wrap-inner-area {
-  background-image: url(../images/subscribe-bg.jpg);
+  background-image: url(../images/subscribe-bg.webp);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

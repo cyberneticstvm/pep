@@ -55,4 +55,24 @@ class RegisteredUserController extends Controller
 
         //return redirect(route('dashboard', absolute: false))->with("success", "User Registered Successfully!");
     }
+
+    function wishlist()
+    {
+        return view('user.wishlist');
+    }
+
+    function listing()
+    {
+        return view('user.listing');
+    }
+
+    function profile()
+    {
+        return view('user.profile');
+    }
+
+    function settings()
+    {
+        return view('user.settings');
+    }
 }

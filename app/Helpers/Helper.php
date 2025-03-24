@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Country;
+use App\Models\PropertyCategory;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Cookie;
 
@@ -15,6 +16,11 @@ function uniqueId($model, $column)
 function settings()
 {
     return Setting::find(1);
+}
+
+function propertyCategories()
+{
+    return PropertyCategory::get();
 }
 
 function preloaderText()

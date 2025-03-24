@@ -43,7 +43,7 @@
         <div class="container" data-cues="slideInUp">
             <div class="subscribe-wrap-inner-area">
                 <div class="subscribe-content">
-                    <h2>Subscribe To Our Newsletter</h2>
+                    <h2 class="">Subscribe To Our Newsletter</h2>
                     <form class="subscribe-form">
                         <input type="search" class="form-control" placeholder="Enter your email">
                         <button type="submit" class="default-btn">Subscribe</button>
@@ -66,23 +66,11 @@
                         </div>
                         <p>Lorem ipsum dolor sit amet, elit dollar consectetur adipiscing elit. Diam lectus purus ultricies neque.</p>
                         <div class="widget-social">
-                            <a href="https://www.facebook.com/" target="_blank">
-                                <i class="ri-facebook-fill"></i>
-                            </a>
                             <a href="https://twitter.com/" target="_blank">
                                 <i class="ri-twitter-x-line"></i>
                             </a>
                             <a href="https://www.instagram.com/" target="_blank">
                                 <i class="ri-instagram-fill"></i>
-                            </a>
-                            <a href="https://bd.linkedin.com/" target="_blank">
-                                <i class="ri-linkedin-fill"></i>
-                            </a>
-                            <a href="https://www.youtube.com/" target="_blank">
-                                <i class="ri-youtube-line"></i>
-                            </a>
-                            <a href="https://www.pinterest.com/" target="_blank">
-                                <i class="ri-pinterest-line"></i>
                             </a>
                         </div>
                     </div>
@@ -131,19 +119,15 @@
                                 <ul class="info-list">
                                     <li>
                                         <span>Address:</span>
-                                        45/15 New alsala Avenew Booston town, Austria
+                                        {{ settings()->address }}
                                     </li>
                                     <li>
                                         <span>Email:</span>
-                                        <a href="mailto:support@demo.com">support@demo.com</a>
+                                        <a href="mailto:{{ settings()->email }}">{{ settings()->email }}</a>
                                     </li>
                                     <li>
                                         <span>Phone:</span>
-                                        <a href="tel:00201068710594">+(002) 0106-8710-594</a>
-                                    </li>
-                                    <li>
-                                        <span>Fax:</span>
-                                        <a href="tel:01068710594">+0106-8710-594</a>
+                                        <a href="tel:{{ settings()->phone }}">{{ settings()->phone }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -153,7 +137,7 @@
             </div>
             <div class="copyright-area">
                 <p>
-                    Copyright <span>Andora</span> All Rights Reserved by <a href="https://envytheme.com/" target="_blank">EnvyTheme</a>
+                    &copy; {{ date('Y') }} <span>{{ settings()->name }}</span> All Rights Reserved by <a href="{{ settings()->domain }}">{{ str_replace('https://', '', settings()->domain) }}</a>
                 </p>
             </div>
         </div>

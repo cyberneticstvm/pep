@@ -242,110 +242,22 @@
 <div class="category-area pt-120 pb-95">
     <div class="container">
         <div class="row justify-content-center" data-cues="slideInUp">
+            @forelse(propertyCategories() as $key => $item)
             <div class="col-lg-3 col-sm-6">
                 <div class="category-card">
                     <div class="image">
-                        <img src="assets/images/category/category1.png" alt="image">
+                        <img src="{{ asset('assets/images/category/'.$item->image) }}" alt="image">
                     </div>
                     <div class="content">
                         <h3>
-                            <a href="property-grid.html">Residential</a>
+                            <a href="property-grid.html">{{ $item->name }}</a>
                         </h3>
                         <span>(26 Properties)</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="category-card">
-                    <div class="image">
-                        <img src="assets/images/category/category2.png" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="property-grid.html">Commercial</a>
-                        </h3>
-                        <span>(33 Properties)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="category-card">
-                    <div class="image">
-                        <img src="assets/images/category/category3.png" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="property-grid.html">Vacation & Resort</a>
-                        </h3>
-                        <span>(37 Properties)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="category-card">
-                    <div class="image">
-                        <img src="assets/images/category/category4.png" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="property-grid.html">The Land</a>
-                        </h3>
-                        <span>(54 Properties)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="category-card">
-                    <div class="image">
-                        <img src="assets/images/category/category5.png" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="property-grid.html">New Construction</a>
-                        </h3>
-                        <span>(123 Properties)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="category-card">
-                    <div class="image">
-                        <img src="assets/images/category/category6.png" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="property-grid.html">Luxury Estate</a>
-                        </h3>
-                        <span>(355 Properties)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="category-card">
-                    <div class="image">
-                        <img src="assets/images/category/category7.png" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="property-grid.html">Eco-Friendly</a>
-                        </h3>
-                        <span>(89 Properties)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="category-card">
-                    <div class="image">
-                        <img src="assets/images/category/category8.png" alt="image">
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="property-grid.html">Historic Properties</a>
-                        </h3>
-                        <span>(17 Properties)</span>
-                    </div>
-                </div>
-            </div>
+            @empty
+            @endforelse
         </div>
     </div>
 </div>

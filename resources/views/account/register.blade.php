@@ -5,7 +5,7 @@
     <div class="container">
         <div class="page-banner-content">
             <h2>Register</h2>
-            <h4>"Unlock Your Dream Property! Register Now to Access Exclusive Listings and Personalized Property Alerts."</h4>
+            <h4>Unlock Your Dream Property! Register Now to Access Exclusive Listings and Personalized Property Alerts</h4>
         </div>
         <div class="profile-authentication-inner mt-5">
             <div class="row justify-content-center">
@@ -16,12 +16,12 @@
                             <p>Already have an account? <a href="{{ route('login') }}">Login here</a></p>
                         </div>
                         {{ html()->form('POST', route('register'))->class('authentication-form')->open() }}
-                        <div class="google-btn">
-                            <button type="button"><img src="{{ asset('assets/images/google.svg') }}" alt="google">Sign in with Google</button>
+                        <!--<div class="google-btn">
+                            <button type="button"><img src="{{ asset('assets/images/google.svg') }}" alt="google">Register with Google</button>
                         </div>
                         <div class="or">
                             <span>OR</span>
-                        </div>
+                        </div>-->
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label class="req">Your Name</label>
@@ -77,7 +77,7 @@
                                 <small class="text-danger">Incorrect Captcha!</small>
                                 @enderror
                                 <label class="req">Captcha</label>
-                                {{ html()->text('captcha', old('captcha'))->class('form-control')->maxlength(4)->placeholder('Captcha') }}
+                                {{ html()->text('captcha')->class('form-control')->maxlength(4)->placeholder('Captcha') }}
                                 <div class="icon">
                                     <i class="ri-lock-line"></i>
                                 </div>

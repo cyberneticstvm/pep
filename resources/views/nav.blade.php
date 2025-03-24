@@ -55,83 +55,9 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="dropdown-toggle nav-link active">
+                    <a href="{{ route('index') }}" class="nav-link active">
                         Home
-                        <i class="ri-arrow-down-s-line"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link active">Main Demo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index-2.html" class="nav-link">Real Estate Demo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index-3.html" class="nav-link">
-                                Commercial Real Estate
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index-4.html" class="nav-link">
-                                Residential Real Estate
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="index-5.html" class="nav-link">
-                                Development Real Estate
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="javascript:void(0)" class="dropdown-toggle nav-link">
-                        Pages
-                        <i class="ri-arrow-down-s-line"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item">
-                            <a href="about-us.html" class="nav-link">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="agents.html" class="nav-link">Agents</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="agent-profile.html" class="nav-link">Agent Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pricing.html" class="nav-link">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="what-we-do.html" class="nav-link">What We Do</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="neighborhood.html" class="nav-link">Neighborhood</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="inquiry-form.html" class="nav-link">Inquiry Form</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="gallery.html" class="nav-link">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="customers-review.html" class="nav-link">Customers Review</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="faq.html" class="nav-link">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="my-account.html" class="nav-link">My Account</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="privacy-policy.html" class="nav-link">Privacy Policy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="terms-conditions.html" class="nav-link">Terms & Conditions</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="not-found.html" class="nav-link">404 Error Page</a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link">
@@ -140,42 +66,44 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li class="nav-item">
-                            <a href="property-grid.html" class="nav-link">Property Grid</a>
+                            <a href="property-grid.html" class="nav-link">Featured Properties</a>
                         </li>
                         <li class="nav-item">
-                            <a href="property-right-sidebar.html" class="nav-link">Property Right Sidebar</a>
+                            <a href="{{ route('choose.category') }}" class="nav-link">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a href="property-left-sidebar.html" class="nav-link">Property Left Sidebar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="property-top-filter.html" class="nav-link">Property Top Filter</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="property-with-map.html" class="nav-link">Property With Map</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="property-with-top-map.html" class="nav-link">Property With Top Map</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="property-categories.html" class="nav-link">Property Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="compare-property.html" class="nav-link">Compare Property</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="add-property.html" class="nav-link">Add Property</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="property-wishlist.html" class="nav-link">Property Wishlist</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="property-details.html" class="nav-link">Property Details</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="property-details-with-slide.html" class="nav-link">Property Details With Slide</a>
+                            <a href="{{ route('choose.category') }}" class="nav-link">Cities</a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="dropdown-toggle nav-link">
+                        Investment
+                        <i class="ri-arrow-down-s-line"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item">
+                            <a href="property-grid.html" class="nav-link">Featured Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="property-grid.html" class="nav-link">Cities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('index') }}" class="nav-link">
+                        Buyers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('index') }}" class="nav-link">
+                        Sellers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('index') }}" class="nav-link">
+                        Agents
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="javascript:void(0)" class="dropdown-toggle nav-link">
@@ -186,55 +114,63 @@
                         <li class="nav-item">
                             <a href="blog-grid.html" class="nav-link">Blog Grid</a>
                         </li>
+                    </ul>
+                </li>
+                @auth
+                <li class="nav-item">
+                    <a href="javascript:void(0)" class="dropdown-toggle nav-link">
+                        Hello {{ Auth::user()->name }}
+                        <i class="ri-arrow-down-s-line"></i>
+                    </a>
+                    <ul class="dropdown-menu">
                         <li class="nav-item">
-                            <a href="blog-right-sidebar.html" class="nav-link">Blog Right Sidebar</a>
+                            <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blog-left-sidebar.html" class="nav-link">Blog Left Sidebar</a>
+                            <a href="{{ route('user.listing') }}" class="nav-link">My Listings</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blog-details.html" class="nav-link">Blog Details</a>
+                            <a href="{{ route('user.wishlist') }}" class="nav-link">My Wishlist</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blog-details-right-sidebar.html" class="nav-link">Blog Details Right Sidebar</a>
+                            <a href="{{ route('user.profile') }}" class="nav-link">My Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blog-details-left-sidebar.html" class="nav-link">Blog Details Left Sidebar</a>
+                            <a href="{{ route('user.settings') }}" class="nav-link">My Settings</a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="dropdown-toggle nav-link">
-                                Others
+                                Add Property
                                 <i class="ri-arrow-down-s-line"></i>
                             </a>
                             <ul class="dropdown-menu">
+                                @forelse(propertyCategories() as $key => $item)
                                 <li class="nav-item">
-                                    <a href="author.html" class="nav-link">Author</a>
+                                    <a href="{{ route('add.property', ['cid' => encrypt($item->id)]) }}" class="nav-link">{{ $item->name }}</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="categories.html" class="nav-link">Categories</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="tags.html" class="nav-link">Tags</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="search-result.html" class="nav-link">Search Result</a>
-                                </li>
+                                @empty
+                                @endforelse
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            {{ html()->form('post', route('logout'))->open() }}
+                            <button class="nav-link" type="submit">Logout &nbsp;&nbsp;<i class="ri-logout-circle-r-line"></i></button>
+                            {{ html()->form()->close() }}
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="contact-us.html" class="nav-link">Contact Us</a>
-                </li>
+                @endauth
             </ul>
             <div class="others-option d-flex align-items-center">
+                @if(!Auth::user())
                 <div class="option-item">
                     <div class="user-info">
                         <a href="{{ route('login') }}">Log In</a> / <a href="{{ route('register') }}">Register</a>
                     </div>
                 </div>
+                @endif
                 <div class="option-item">
-                    <a href="contact-us.html" class="default-btn">Contact Us</a>
+                    <a href="{{ route('choose.category') }}" class="default-btn">List Your Property</a>
                 </div>
             </div>
         </div>
@@ -502,20 +438,23 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <a class="accordion-button without-icon" href="contact-us.html">
-                    Contact Us
-                </a>
-            </div>
         </div>
         <div class="others-option">
+            @if(!Auth::user())
             <div class="option-item">
                 <div class="user-info">
-                    <a href="my-account.html">Log In / Register</a>
+                    <a href="{{ route('login') }}">Log In</a> / <a href="{{ route('register') }}">Register</a>
                 </div>
             </div>
+            @else
             <div class="option-item">
-                <a href="contact-us.html" class="default-btn">Contact Us</a>
+                {{ html()->form('post', route('logout'))->open() }}
+                <button class="nav-link" type="submit">Logout &nbsp;&nbsp;<i class="ri-logout-circle-r-line"></i></button>
+                {{ html()->form()->close() }}
+            </div>
+            @endif
+            <div class="option-item">
+                <a href="contact-us.html" class="default-btn">List Your Property</a>
             </div>
             <div class="option-item">
                 <form class="search-form">

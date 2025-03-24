@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 class WebController extends Controller
@@ -27,6 +28,29 @@ class WebController extends Controller
         $desc = "";
         $keywords = "";
         return view('index', compact('title', 'desc', 'keywords'));
+    }
+
+    function login()
+    {
+        if (Auth::user()):
+            return view('user.dashboard');
+        else:
+            return view('account.login');
+        endif;
+    }
+
+    function register()
+    {
+        if (Auth::user()):
+            return view('user.dashboard');
+        else:
+            return view('account.register');
+        endif;
+    }
+
+    function dashboard()
+    {
+        return view('user.dashboard');
     }
 
     function terms()
