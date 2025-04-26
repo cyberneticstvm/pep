@@ -4,6 +4,7 @@
     <div class="container">
         <div class="page-banner-content">
             <h2>Featured Categories</h2>
+            <h4>Choose a category</h4>
         </div>
     </div>
 </div>

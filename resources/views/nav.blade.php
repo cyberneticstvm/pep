@@ -40,7 +40,7 @@
             <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
         </a>
         <form class="search-form">
-            <input type="text" class="search-field" placeholder="Search property">
+            <input type="text" class="search-field" placeholder="Search Property by Id">
             <button type="submit">
                 <i class="ri-search-line"></i>
             </button>
@@ -69,10 +69,10 @@
                             <a href="property-grid.html" class="nav-link">Featured Properties</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('choose.category') }}" class="nav-link">Categories</a>
+                            <a href="{{ route('featured.category') }}" class="nav-link">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('choose.category') }}" class="nav-link">Cities</a>
+                            <a href="{{ route('featured.category') }}" class="nav-link">Cities</a>
                         </li>
                     </ul>
                 </li>
@@ -170,7 +170,7 @@
                 </div>
                 @endif
                 <div class="option-item">
-                    <a href="{{ route('choose.category') }}" class="default-btn">List Your Property</a>
+                    <a href="{{ route('choose.category') }}" class="btn default-btn">List Your Property</a>
                 </div>
             </div>
         </div>

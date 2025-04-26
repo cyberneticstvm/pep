@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->renderable(function (NotFoundHttpException $e) {
             return response()->view('errors.error', ['exception' => $e]);
         });
-        $exceptions->renderable(function (ErrorException $e) {
+        /*$exceptions->renderable(function (ErrorException $e) {
             return response()->view('errors.error', ['exception' => $e]);
-        });
+        });*/
     })->create();

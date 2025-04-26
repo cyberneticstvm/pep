@@ -11,6 +11,18 @@
             $(this).find(".btn-submit").attr("disabled", true);
             $(this).find(".btn-submit").html("Loading...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
         });
+
+        $(document).on('shown.bs.tab', 'a[href="#features"], a[href="#pricing"], a[href="#images"]', function(e) {
+            let pid = $("#property_id").val();
+            if (pid == 0) {
+                let msg = {
+                    'error': 'Please Complete Property Details and Continue'
+                }
+                failed(msg);
+                $('.nav-tabs a:first').tab('show');
+            }
+            return true;
+        })
     });
 </script>
 <script>
@@ -109,26 +121,13 @@
             }
         })
     });
+</script>
+<script>
+    function validatePropertyForm() {
 
-    function validateStudentBatch() {
-        let frm = document.forms["frmStudentBatch"];
-        if (!$(".chkStudent").is(":checked")) {
-            failed({
-                'error': 'Please select at least one Student'
-            })
-            return false;
-        }
-        return true;
-    }
-
-    function validateCourseSyllabus() {
-        let frm = document.forms["frmCourseSyllabus"];
-        if (!$(".chkSyllabus").is(":checked")) {
-            failed({
-                'error': 'Please select at least one Syllabus'
-            })
-            return false;
-        }
-        return true;
+        /*success({
+            'success': 'Validated'
+        })*/
     }
 </script>
+<input type="hidden" name="ccode" id="ccode" value="{{ country()->code ?? 'us' }}" />

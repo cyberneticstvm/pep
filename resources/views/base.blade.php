@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/remixicon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    @if(in_array(Route::current()->getName(), array('add.property', 'update.property')))
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css" rel="stylesheet" />
+    @endif
     <link rel="stylesheet" href="{{ asset('assets/css/pep.css') }}">
 
     <title>{{ $title ?? 'Prime Elite Property' }}</title>
@@ -170,10 +173,69 @@
     <script src="{{ asset('assets/js/scrollCue.min.js') }}"></script>
     <script src="{{ asset('assets/js/fslightbox.min.js') }}"></script>
     <script src="{{ asset('assets/js/simpleParallax.min.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/pep.js') }}"></script>
+    <script>
+        (g => {
+            var h, a, k, p = "The Google Maps JavaScript API",
+                c = "google",
+                l = "importLibrary",
+                q = "__ib__",
+                m = document,
+                b = window;
+            b = b[c] || (b[c] = {});
+            var d = b.maps || (b.maps = {}),
+                r = new Set,
+                e = new URLSearchParams,
+                u = () => h || (h = new Promise(async (f, n) => {
+                    await (a = m.createElement("script"));
+                    e.set("libraries", [...r] + "");
+                    for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                    e.set("callback", c + ".maps." + q);
+                    a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                    d[q] = f;
+                    a.onerror = () => h = n(Error(p + " could not load."));
+                    a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                    m.head.append(a)
+                }));
+            d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
+        })
+        ({
+            key: "{{ Config('pep.gpak') }}",
+            v: "weekly"
+        });
+    </script>
+</body>
+<script src="{{ asset('assets/js/main.js') }}"></script>
+@if(in_array(Route::current()->getName(), array('add.property', 'update.property')))
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+    <script type="text/javascript">
+        Dropzone.autoDiscover = false;
+        let myDropzone = new Dropzone("div#document-dropzone", {
+            url: "{{ route('add.property') }}",
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            parallelUploads: 1,
+            maxFileSize: 10,
+            maxFiles: 10,
+            acceptedFiles: 'image/*',
+            init: function() {
+                let drpzone = this;
+                $("#frmProperty").submit(function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    drpzone.processQueue();
+                });
+            },
+            completemultiple: function(file, response) {
+                console.log(response);
+                $("#frmProperty").submit();
+            },
+        });
+    </script>-->
+@endif
+<script src="{{ asset('assets/js/pep.js') }}"></script>
 
-    @include("message")
+@include("message")
 </body>
 
 </html>

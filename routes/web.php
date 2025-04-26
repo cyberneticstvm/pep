@@ -18,13 +18,12 @@ Route::middleware(['web'])->group(function () {
         Route::get('/switch/country', 'switchCountry')->name('switch.country');
         Route::get('/refresh/captcha', 'refreshCaptcha')->name('refresh.captcha');
     });
-
-    Route::get('category', function () {
-        return view('property.category');
-    })->name('choose.category');
-
     Route::post('register', [RegisteredUserController::class, 'store']);
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+    Route::get('featured/category', function () {
+        return view('property.category');
+    })->name('featured.category');
 });
 
 Route::middleware(['web', 'auth'])->group(function () {
@@ -40,8 +39,13 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('choose/category', function () {
+        return view('property.choose_category');
+    })->name('choose.category');
+
     Route::prefix('')->controller(PropertyController::class)->group(function () {
         Route::get('/add/property', 'create')->name('add.property');
+        Route::post('/add/property', 'store')->name('property.store');
     });
 
     Route::prefix('user')->controller(RegisteredUserController::class)->group(function () {
