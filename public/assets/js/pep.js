@@ -12,6 +12,55 @@ $(function () {
 
     $(document).on("click", ".btn-add-property", function(e){
         e.preventDefault();
+        let currentTab = $(".nav-tabs li a.active").attr("href");
+        let nextTab = $('.nav-tabs a[href="'+currentTab+'"]').parent().next().find('a').attr('href')
+        let frm = document.getElementById('frmProperty');
+        let formData = new FormData(frm);
+        let proceed = validatePropertyForm();
+        if(proceed){
+            if(currentTab == '#images'){
+                myDropzone.processQueue();
+            }else{
+                $.ajax({
+                    type: 'POST',
+                    url: '/add/property',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function(){
+                        $(".btn-add-property").attr("disabled", true);
+                        $(".btn-add-property").html("Processing...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
+                    },
+                    success: function(response) {
+                        if (response.type == 'success') {
+                            $("#property_id").val(response.property.id)
+                            $('.nav-tabs a[href="'+nextTab+'"]').tab('show')
+                            success({
+                                'success': response.message
+                            })
+                        } else if (response.type == 'warning') {
+                            notify(response.message);
+                        } else {
+                            failed({
+                                'error': response.message
+                            })
+                        }
+                    },
+                    complete: function(){
+                        $(".btn-add-property").attr("disabled", false);
+                        if(nextTab == '#images'){
+                            $(".btn-add-property").html("Submit for Approval");
+                        }else{
+                            $(".btn-add-property").html("Save & continue");
+                        }                    
+                    },
+                    error: function (xhr, status, error) {                       
+                        alert('Your form was not sent successfully.');
+                        console.error(error);
+                    }
+                });
+            }
+        }        
     });
 });
 
@@ -48,11 +97,12 @@ async function initMap() {
             document.querySelector('input[name="display_name"]').value = address.displayName;
             document.querySelector('input[name="formatted_address"]').value = address.formattedAddress;
         }else{
-            document.querySelector('input[name="lat"]').value = "";
+            //document.querySelector('div[id="location"]').textContent = "";
+            /*document.querySelector('input[name="lat"]').value = "";
             document.querySelector('input[name="lng"]').value = "";
             document.querySelector('input[name="place_id"]').value = "";
             document.querySelector('input[name="display_name"]').value = "";
-            document.querySelector('input[name="formatted_address"]').value = "";
+            document.querySelector('input[name="formatted_address"]').value = "";*/
             failed({
                 'error': 'The location you have selected might invalid. Please switch your contry and try again'
             })

@@ -10,4 +10,9 @@ class Property extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
+    public function propertyNumber()
+    {
+        return 'PEP-' . $this->property_number;
+    }
 }

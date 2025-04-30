@@ -11,9 +11,9 @@
 <div class="add-listing-area mb-5">
     <div class="container">
         <div class="add-property-form agent-profile-information-tabs">
-            {{ html()->form('POST', route('property.store'))->class('authentication-form')->attribute('id', 'frmProperty')->acceptsFiles()->open() }}
+            {{ html()->form('POST', route('property.store'))->class('authentication-form')->attribute('id', 'frmProperty')->attribute('name', 'frmProperty')->acceptsFiles()->open() }}
             <input type="hidden" name="cat_id" value="{{ encrypt($category->id) }}" />
-            <input type="hidden" name="property_id" id="property_id" value="{{ $property?->id > 0 ? encrypt($property?->id) : 0 }}" />
+            <input type="hidden" name="property_id" id="property_id" value="{{ $property?->id ?? 0 }}" />
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item"><a class="nav-link active" id="overview-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview">Property Details</a></li>
                 <li class="nav-item"><a class="nav-link" id="features-tab" data-bs-toggle="tab" href="#features" role="tab" aria-controls="features">Features</a></li>
@@ -79,58 +79,62 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="features" role="tabpanel">
-                    <div class="row justify-content-center">
+                    <div class="row">
                         <h3>Features</h3>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                {{ html()->label()->text('No. of Beds')->class('req') }}
+                                {{ html()->number('number_of_beds', $property?->number_of_beds ?? old('number_of_beds'))->class('form-control')->placeholder('0') }}
+                                @error('number_of_beds')
+                                <small class="text-danger">{{ $errors->first('number_of_beds') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                {{ html()->label()->text('No. of Baths')->class('req') }}
+                                {{ html()->number('number_of_baths', $property?->number_of_baths ?? old('number_of_baths'))->class('form-control')->placeholder('0') }}
+                                @error('number_of_baths')
+                                <small class="text-danger">{{ $errors->first('number_of_baths') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                {{ html()->label()->text('Square Feet')->class('req') }}
+                                {{ html()->number('square_feet', $property?->square_feet ?? old('square_feet'))->class('form-control')->placeholder('0') }}
+                                @error('square_feet')
+                                <small class="text-danger">{{ $errors->first('square_feet') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pricing" role="tabpanel">
-                    <div class="row justify-content-center">
+                    <div class="row">
                         <h3>Pricing</h3>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="form-group">
+                                {{ html()->label()->text('Price in USD')->class('req') }}
+                                {{ html()->number('price', $property?->price ?? old('price'), 1, '', 1)->class('form-control')->placeholder('0') }}
+                                @error('price')
+                                <small class="text-danger">{{ $errors->first('price') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="images" role="tabpanel">
                     <div class="comments-content">
                         <h2>Images</h2>
+                        <small>Allowed height and width are 1020px and 1020px respectively. Max size is 1MB each and max limit is 10 images.</small>
+                        <div class="dropzone mt-3"></div>
                     </div>
                 </div>
-                <div class="text-end">
-                    {{ html()->button($property?->id > 0 ? 'Update & Continue' : 'Save & Continue')->attribute('onclick', 'return validatePropertyForm()')->class("btn default-btn btn-add-property") }}
+                <div class="text-end mt-3">
+                    {{ html()->button('Save & Continue')->attribute('type', 'button')->class("btn default-btn btn-add-property") }}
                 </div>
             </div>
-            <!--<div class="row justify-content-center">
-                <div class="col-lg-12 col-md-12">
-                    <div class="form-group">
-                        {{ html()->label()->text('Property Name / Title')->class('req') }}
-                        {{ html()->text('name', old('name'))->class('form-control')->placeholder('Property Name / Title') }}
-                        @error('name')
-                        <small class="text-danger">{{ $errors->first('name') }}</small>
-                        @enderror
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="form-group">
-                        {{ html()->label()->text('Property Description')->class('req') }}
-                        {{ html()->textarea('description', old('description'))->class('form-control')->placeholder('Property Description') }}
-                        @error('description')
-                        <small class="text-danger">{{ $errors->first('description') }}</small>
-                        @enderror
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="form-group">
-                        <div class="mb-1 dropzone" id="document-dropzone">
-                            <h6>Upload Multiple Images</h6>
-                        </div>
-                        {{ html()->span()->text('Upto 10 images with 1080px width and 1080px height, max 1MB size each. First image will be the featured image. Allowed formats are .jpg, .jpeg, .png, .webp')->class('text-primary') }}
-                        @error('images')
-                        <small class="text-danger">{{ $errors->first('images') }}</small>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group col-md-12 text-end">
-                    {{ html()->submit("Submit for Review")->class("btn btn-primary btn-submit btn-add-property") }}
-                </div>
-            </div>-->
             {{ html()->form()->close() }}
         </div>
     </div>

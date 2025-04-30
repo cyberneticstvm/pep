@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Link of CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
@@ -206,32 +207,41 @@
 </body>
 <script src="{{ asset('assets/js/main.js') }}"></script>
 @if(in_array(Route::current()->getName(), array('add.property', 'update.property')))
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
-    <script type="text/javascript">
-        Dropzone.autoDiscover = false;
-        let myDropzone = new Dropzone("div#document-dropzone", {
-            url: "{{ route('add.property') }}",
-            autoProcessQueue: false,
-            uploadMultiple: true,
-            addRemoveLinks: true,
-            parallelUploads: 1,
-            maxFileSize: 10,
-            maxFiles: 10,
-            acceptedFiles: 'image/*',
-            init: function() {
-                let drpzone = this;
-                $("#frmProperty").submit(function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    drpzone.processQueue();
-                });
-            },
-            completemultiple: function(file, response) {
-                console.log(response);
-                $("#frmProperty").submit();
-            },
-        });
-    </script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+<script type="text/javascript">
+    Dropzone.autoDiscover = false;
+    let myDropzone = new Dropzone(".dropzone", {
+        url: "{{ route('property.store.assets') }}",
+        autoProcessQueue: false,
+        uploadMultiple: true,
+        addRemoveLinks: true,
+        parallelUploads: 10,
+        maxFileSize: 10,
+        maxFiles: 10,
+        acceptedFiles: 'image/*',
+        paramName: 'files',
+        init: function() {
+            let drpzone = this;
+            drpzone.on('sending', function(file, xhr, formData) {
+                $(".btn-add-property").attr("disabled", true);
+                $(".btn-add-property").html("Submitting...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
+                var pid = document.getElementById("property_id").value;
+                formData.append('property_id', pid);
+                formData.append("_token", "{{ csrf_token() }}");
+            });
+        },
+        success: function(file, response) {
+            if (response.type == 'error') {
+                failed(response)
+            } else {
+                success(response);
+            }
+        },
+        completemultiple: function(files) {
+            window.location.href = "{{ route('property.store.assets.success') }}";
+        },
+    });
+</script>
 @endif
 <script src="{{ asset('assets/js/pep.js') }}"></script>
 

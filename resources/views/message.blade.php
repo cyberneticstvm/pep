@@ -12,7 +12,7 @@
             $(this).find(".btn-submit").html("Loading...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
         });
 
-        $(document).on('shown.bs.tab', 'a[href="#features"], a[href="#pricing"], a[href="#images"]', function(e) {
+        /*$(document).on('shown.bs.tab', 'a[href="#features"], a[href="#pricing"], a[href="#images"]', function(e) {
             let pid = $("#property_id").val();
             if (pid == 0) {
                 let msg = {
@@ -22,7 +22,7 @@
                 $('.nav-tabs a:first').tab('show');
             }
             return true;
-        })
+        })*/
     });
 </script>
 <script>
@@ -124,10 +124,44 @@
 </script>
 <script>
     function validatePropertyForm() {
-
-        /*success({
-            'success': 'Validated'
-        })*/
+        let frm = document.forms["frmProperty"];
+        if (!frm['name'].value) {
+            failed({
+                'error': 'Property Name / Title is required'
+            })
+            return false;
+        }
+        if (!frm['description'].value) {
+            failed({
+                'error': 'Property description is required'
+            })
+            return false;
+        }
+        if (!frm['property_type'].value) {
+            failed({
+                'error': 'Property type is required'
+            })
+            return false;
+        }
+        if (!frm['property_condition'].value) {
+            failed({
+                'error': 'Property condition is required'
+            })
+            return false;
+        }
+        if (!frm['formatted_address'].value) {
+            failed({
+                'error': 'Property location is required'
+            })
+            return false;
+        }
+        if (frm['country_code'].value != "{{ country()->code }}") {
+            failed({
+                'error': 'Invalid location has been selected. You may choose a location in' + "{{ country()->code ?? 'us' }}"
+            })
+            return false;
+        }
+        return true;
     }
 </script>
 <input type="hidden" name="ccode" id="ccode" value="{{ country()->code ?? 'us' }}" />
