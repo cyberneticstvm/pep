@@ -47,7 +47,7 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('/add/property', 'create')->name('add.property');
         Route::post('/add/property', 'store')->name('property.store');
         Route::post('/add/property/assets', 'storeAssets')->name('property.store.assets');
-        Route::get('/add/property/success', 'success')->name('property.store.assets.success');
+        Route::get('/add/property/success/{pnumber}', 'success')->name('property.store.assets.success');
     });
 
     Route::prefix('user')->controller(RegisteredUserController::class)->group(function () {

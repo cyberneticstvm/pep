@@ -29,7 +29,7 @@ class PropertyController extends Controller
     public function create(Request $request)
     {
         $category = PropertyCategory::findOrFail(decrypt($request->cid));
-        $extras = Extra::orderBy('value')->get();
+        $extras = Extra::orderBy('id')->get();
         $property = null;
         return view('property.create', compact('category', 'extras', 'property'));
     }
@@ -80,32 +80,27 @@ class PropertyController extends Controller
         ]);
         try {
             if ($request->property_id > 0):
-                if ($request->hasFile('files')):
-                    foreach ($request->file('files') as $file):
-                        $fname = time() . '_' . $file->getClientOriginalName();
-                        $storeFile = $file->storeAs('/property/images/' . $request->property_id . '/', $fname, 'gcs');
-                        $url = Storage::disk('gcs')->url($storeFile);
-                        $files[] = [
-                            'property_id' => $request->property_id,
-                            'asset_url' => $url,
-                            'asset_type' => $file->extension(),
-                            'created_by' => $request->user()->id,
-                            'updated_by' => $request->user()->id,
-                            'created_at' => Carbon::now(),
-                            'updated_at' => Carbon::now(),
-                        ];
-                    endforeach;
-                    PropertyAssets::insert($files);
-                else:
-                    return response()->json([
-                        'error' => "Select an Image",
-                        'type' => 'error',
-                    ]);
-                endif;
+                $property = Property::find($request->property_id);
+                foreach ($request->file('files') as $file):
+                    $fname = time() . '_' . $file->getClientOriginalName();
+                    $storeFile = $file->storeAs('/property/images/' . $request->property_id . '/', $fname, 'gcs');
+                    $url = Storage::disk('gcs')->url($storeFile);
+                    $files[] = [
+                        'property_id' => $property->id,
+                        'asset_url' => $url,
+                        'asset_type' => $file->extension(),
+                        'created_by' => $request->user()->id,
+                        'updated_by' => $request->user()->id,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+                endforeach;
+                PropertyAssets::insert($files);
             else:
                 return response()->json([
                     'error' => "Property Id Unavaialable!",
                     'type' => 'error',
+
                 ]);
             endif;
         } catch (Exception $e) {
@@ -117,12 +112,13 @@ class PropertyController extends Controller
         return response()->json([
             'success' => 'Assets successfully updated',
             'type' => 'success',
+            'property' => $property,
         ]);
     }
 
-    function success()
+    function success($pnumber)
     {
-        return view('success');
+        return view('success', compact('pnumber'));
     }
 
     /**

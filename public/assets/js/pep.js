@@ -10,6 +10,18 @@ $(function () {
         });
     });
 
+    /*$(document).on('shown.bs.tab', 'a[href="#features"], a[href="#pricing"], a[href="#images"]', function(e) {
+        let pid = $("#property_id").val();
+        if (pid == 0) {
+            let msg = {
+                'error': 'Please Complete Property Details and Continue'
+            }
+            failed(msg);
+            $('.nav-tabs a:first').tab('show');
+        }
+        return true;
+    });*/
+
     $(document).on("click", ".btn-add-property", function(e){
         e.preventDefault();
         let currentTab = $(".nav-tabs li a.active").attr("href");
@@ -19,7 +31,13 @@ $(function () {
         let proceed = validatePropertyForm();
         if(proceed){
             if(currentTab == '#images'){
-                myDropzone.processQueue();
+                if(myDropzone.getAcceptedFiles().length === 0){
+                    failed({
+                        error: "Upload an image / asset to continue",
+                    })
+                }else{
+                    myDropzone.processQueue();
+                }                
             }else{
                 $.ajax({
                     type: 'POST',

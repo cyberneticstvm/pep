@@ -11,18 +11,6 @@
             $(this).find(".btn-submit").attr("disabled", true);
             $(this).find(".btn-submit").html("Loading...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
         });
-
-        /*$(document).on('shown.bs.tab', 'a[href="#features"], a[href="#pricing"], a[href="#images"]', function(e) {
-            let pid = $("#property_id").val();
-            if (pid == 0) {
-                let msg = {
-                    'error': 'Please Complete Property Details and Continue'
-                }
-                failed(msg);
-                $('.nav-tabs a:first').tab('show');
-            }
-            return true;
-        })*/
     });
 </script>
 <script>
@@ -146,6 +134,18 @@
         if (!frm['property_condition'].value) {
             failed({
                 'error': 'Property condition is required'
+            })
+            return false;
+        }
+        if (!frm['property_for'].value) {
+            failed({
+                'error': 'Property for is required'
+            })
+            return false;
+        }
+        if (!frm['built_year'].value) {
+            failed({
+                'error': 'Property built year is required'
             })
             return false;
         }

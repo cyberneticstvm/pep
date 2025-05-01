@@ -210,6 +210,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
 <script type="text/javascript">
     Dropzone.autoDiscover = false;
+    let pnumber = 0;
     let myDropzone = new Dropzone(".dropzone", {
         url: "{{ route('property.store.assets') }}",
         autoProcessQueue: false,
@@ -223,22 +224,30 @@
         init: function() {
             let drpzone = this;
             drpzone.on('sending', function(file, xhr, formData) {
+                //console.log(xhr)
                 $(".btn-add-property").attr("disabled", true);
                 $(".btn-add-property").html("Submitting...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
                 var pid = document.getElementById("property_id").value;
                 formData.append('property_id', pid);
                 formData.append("_token", "{{ csrf_token() }}");
             });
+            drpzone.on('queuecomplete', function() {
+                success({
+                    success: "Assets successfully updated",
+                });
+                window.location.href = "/add/property/success/" + pnumber;
+            });
         },
         success: function(file, response) {
+            //console.log(response)
             if (response.type == 'error') {
+                $(".btn-add-property").attr("disabled", false);
+                $(".btn-add-property").html("Submit for Approval");
+                this.removeAllFiles();
                 failed(response)
             } else {
-                success(response);
+                pnumber = response.property.property_number
             }
-        },
-        completemultiple: function(files) {
-            window.location.href = "{{ route('property.store.assets.success') }}";
         },
     });
 </script>
