@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('extras', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id')->default(0);
+            $table->unsignedBigInteger('subcategory_id')->default(0);
             $table->string('name', 50)->nullable();
             $table->string('value', 50)->nullable();
             $table->text('description')->nullable();

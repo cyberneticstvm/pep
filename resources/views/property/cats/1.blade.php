@@ -127,7 +127,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group facilities">
                                 {{ html()->label()->text('Floor Type')->class('req') }}
                                 <ul class="check-list">
@@ -145,7 +145,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="form-group facilities">
                                 {{ html()->label()->text('Appliances')->class('req') }}
                                 <ul class="check-list">
