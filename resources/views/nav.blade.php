@@ -37,7 +37,7 @@
 <nav class="navbar navbar-expand-xl" id="navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('index') }}">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
+            <img src="{{ asset('assets/images/logo.webp') }}" alt="logo">
         </a>
         <form class="search-form">
             <input type="text" class="search-field" placeholder="Search Property by Id">

@@ -29,7 +29,7 @@
     <!-- Start Preloader Area -->
     <div class="preloader-area text-center position-fixed top-0 bottom-0 start-0 end-0" id="preloader">
         <div class="loader position-absolute start-0 end-0">
-            <img src="{{ asset('assets/images/favicon.png') }}" alt="favicon">
+            <img src="{{ asset('assets/images/favicon.png') }}" alt="favicon" width="5%">
             <div class="waviy position-relative">
                 @foreach(preloaderText() as $key => $item)
                 <span class="d-inline-block">{{ $item }}</span>
@@ -64,8 +64,8 @@
                 <div class="col-xl-3 col-md-12">
                     <div class="single-footer-widget pe-3">
                         <div class="widget-logo">
-                            <a href="index.html">
-                                <img src="{{ asset('assets/images/logo2.png') }}" alt="logo2">
+                            <a href="{{ route('index') }}">
+                                <img src="{{ asset('assets/images/logo-white.png') }}" alt="logo2" width="50%">
                             </a>
                         </div>
                         <p>Lorem ipsum dolor sit amet, elit dollar consectetur adipiscing elit. Diam lectus purus ultricies neque.</p>
