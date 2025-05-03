@@ -304,6 +304,24 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                {{ html()->label()->text('Backup power systems')->class('req') }}
+                                {{ html()->select('has_power_backup', $extras->where('name', 'has')->pluck('value', 'id'), $property?->has_power_backup ?? old('has_power_backup'))->class('form-control')->placeholder('Select') }}
+                                @error('has_power_backup')
+                                <small class="text-danger">{{ $errors->first('has_power_backup') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                {{ html()->label()->text('Emergency lighting / exit signage')->class('req') }}
+                                {{ html()->select('has_exit_signage', $extras->where('name', 'has')->pluck('value', 'id'), $property?->has_exit_signage ?? old('has_exit_signage'))->class('form-control')->placeholder('Select') }}
+                                @error('has_exit_signage')
+                                <small class="text-danger">{{ $errors->first('has_exit_signage') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="row mt-3">
                         <h3>Special Fetaures</h3>
