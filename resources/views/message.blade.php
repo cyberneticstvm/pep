@@ -143,12 +143,12 @@
             })
             return false;
         }
-        if (!frm['built_year'].value) {
+        /*if (!frm['built_year'].value) {
             failed({
                 'error': 'Property built year is required'
             })
             return false;
-        }
+        }*/
         if (!frm['formatted_address'].value) {
             failed({
                 'error': 'Property location is required'
