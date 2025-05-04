@@ -253,7 +253,6 @@
 </script>
 @endif
 <script src="{{ asset('assets/js/pep.js') }}"></script>
-
 @include("message")
 </body>
 

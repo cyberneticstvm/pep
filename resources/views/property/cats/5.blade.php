@@ -35,7 +35,7 @@
                         <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                                 {{ html()->label()->text('Property Type')->class('req') }}
-                                {{ html()->select('property_type', $extras->where('name', 'type')->where('category_id', $category->id)->pluck('value', 'id'), $property?->property_type ?? old('property_type'))->class('form-control')->placeholder('Select') }}
+                                {{ html()->select('property_type', $extras->where('name', 'type')->whereIn('category_id', [1,2,3])->pluck('value', 'id'), $property?->property_type ?? old('property_type'))->class('form-control')->placeholder('Select') }}
                                 @error('property_type')
                                 <small class="text-danger">{{ $errors->first('property_type') }}</small>
                                 @enderror
@@ -59,7 +59,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3">
+                        <!--<div class="col-lg-3 col-md-3">
                             <div class="form-group">
                                 {{ html()->label()->text('Built Year')->class('req') }}
                                 {{ html()->number('built_year', $property?->built_year ?? old('built_year'))->class('form-control')->placeholder('0000') }}
@@ -67,7 +67,7 @@
                                 <small class="text-danger">{{ $errors->first('built_year') }}</small>
                                 @enderror
                             </div>
-                        </div>
+                        </div>-->
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 {{ html()->label()->text('Select Location')->class('req') }}
@@ -88,7 +88,16 @@
                 </div>
                 <div class="tab-pane fade" id="features" role="tabpanel">
                     <div class="row">
-                        <h3>Interior Features</h3>
+                        <h3>Project Details and Features</h3>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                {{ html()->label()->text('Project Details and Features')->class('req') }}
+                                {{ html()->textarea('project_details', $property?->project_details ?? old('project_details'))->rows(10)->class('form-control')->placeholder('Project Details and Features') }}
+                                @error('project_details')
+                                <small class="text-danger">{{ $errors->first('project_details') }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pricing" role="tabpanel">
@@ -106,7 +115,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 {{ html()->label()->text('Other Info.')->class('req') }}
-                                {{ html()->textarea('other_info', $property?->other_info ?? old('other_info'), 1, '', 1)->class('form-control')->rows(5)->placeholder('Other Info.') }}
+                                {{ html()->textarea('other_info', $property?->other_info ?? old('other_info'))->rows(5)->class('form-control')->placeholder('Other Info.') }}
                             </div>
                         </div>
                     </div>

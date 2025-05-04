@@ -91,6 +91,15 @@
                         <h3>Interior Features</h3>
                         <div class="col-lg-3 col-md-3">
                             <div class="form-group">
+                                {{ html()->label()->text('Area (Sq.Ft)')->class('req') }}
+                                {{ html()->number('square_feet', $property?->square_feet ?? old('square_feet'))->class('form-control')->placeholder('0') }}
+                                @error('square_feet')
+                                <small class="text-danger">{{ $errors->first('square_feet') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
                                 {{ html()->label()->text('Lobby lounge and front desk area')->class('req') }}
                                 {{ html()->select('has_lobby', $extras->where('name', 'has')->pluck('value', 'id'), $property?->has_lobby ?? old('has_lobby'))->class('form-control')->placeholder('Select') }}
                                 @error('has_lobby')
@@ -264,7 +273,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 {{ html()->label()->text('Other Info.')->class('req') }}
-                                {{ html()->textarea('other_info', $property?->other_info ?? old('other_info'), 1, '', 1)->class('form-control')->rows(5)->placeholder('Other Info.') }}
+                                {{ html()->textarea('other_info', $property?->other_info ?? old('other_info'))->class('form-control')->rows(5)->placeholder('Other Info.') }}
                             </div>
                         </div>
                     </div>

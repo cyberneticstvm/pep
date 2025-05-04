@@ -230,7 +230,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 {{ html()->label()->text('Other Info.')->class('req') }}
-                                {{ html()->textarea('other_info', $property?->other_info ?? old('other_info'), 1, '', 1)->class('form-control')->rows(5)->placeholder('Other Info.') }}
+                                {{ html()->textarea('other_info', $property?->other_info ?? old('other_info'))->class('form-control')->rows(5)->placeholder('Other Info.') }}
                             </div>
                         </div>
                     </div>
