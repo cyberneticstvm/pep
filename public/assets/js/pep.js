@@ -82,7 +82,26 @@ $(function () {
     });
 });
 
-async function initMap() {      
+window.addEventListener('load', initialize);
+
+function initialize() {
+    var input = document.getElementById('location');
+    let ccode = String($('#ccode').val());
+    var autocomplete = new google.maps.places.Autocomplete(input, {
+        componentRestrictions: {'country': [ccode]},
+    });
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        $('#lat').val(place.geometry['location'].lat());
+        $('#lng').val(place.geometry['location'].lng());
+        $('#place_id').val(place.place_id);
+        $('#display_name').val(place.address_components[0]['long_name']);
+        $('#formatted_address').val(place.formatted_address);
+        $('#country_code').val(ccode);
+    });
+}
+
+/*async function initMap() {      
     await google.maps.importLibrary("places");
     var ccode = document.querySelector('input[name="ccode"]').value;
     const placeAutocomplete = new google.maps.places.PlaceAutocompleteElement({
@@ -116,11 +135,11 @@ async function initMap() {
             document.querySelector('input[name="formatted_address"]').value = address.formattedAddress;
         }else{
             //document.querySelector('div[id="location"]').textContent = "";
-            /*document.querySelector('input[name="lat"]').value = "";
-            document.querySelector('input[name="lng"]').value = "";
-            document.querySelector('input[name="place_id"]').value = "";
-            document.querySelector('input[name="display_name"]').value = "";
-            document.querySelector('input[name="formatted_address"]').value = "";*/
+            //document.querySelector('input[name="lat"]').value = "";
+            //document.querySelector('input[name="lng"]').value = "";
+            //document.querySelector('input[name="place_id"]').value = "";
+            //document.querySelector('input[name="display_name"]').value = "";
+            //document.querySelector('input[name="formatted_address"]').value = "";
             failed({
                 'error': 'The location you have selected might invalid. Please switch your contry and try again'
             })
@@ -128,9 +147,9 @@ async function initMap() {
         }
                 
       });
-}
+}*/
 
-initMap();
+//initMap();
 
   
 

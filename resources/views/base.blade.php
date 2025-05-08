@@ -175,7 +175,7 @@
     <script src="{{ asset('assets/js/fslightbox.min.js') }}"></script>
     <script src="{{ asset('assets/js/simpleParallax.min.js') }}"></script>
     <script>
-        (g => {
+        /*(g => {
             var h, a, k, p = "The Google Maps JavaScript API",
                 c = "google",
                 l = "importLibrary",
@@ -202,7 +202,10 @@
         ({
             key: "{{ Config('pep.gpak') }}",
             v: "weekly"
-        });
+        });*/
+    </script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key={{config('pep.gpak')}}&loading=async&libraries=places">
     </script>
 </body>
 <script src="{{ asset('assets/js/main.js') }}"></script>

@@ -81,8 +81,8 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 {{ html()->label()->text('Select Location')->class('req') }}
-                                <!--{{ html()->text('location', old('location'))->class('form-control')->attribute('id', 'location')->placeholder('Location') }}-->
-                                <div id="location"></div>
+                                {{ html()->text('location', old('location'))->class('form-control')->attribute('id', 'location')->placeholder('Location') }}
+                                <!--<div id="location"></div>-->
                                 <input type="hidden" name="lat" id="lat" value="{{ $property?->lat ?? old('lat') }}" />
                                 <input type="hidden" name="lng" id="lng" value="{{ $property?->lng ?? old('lng') }}" />
                                 <input type="hidden" name="place_id" id="place_id" value="{{ $property?->place_id ?? old('place_id') }}" />
