@@ -82,9 +82,9 @@ $(function () {
     });
 });
 
-window.addEventListener('load', initialize);
+window.addEventListener('load', initMap);
 
-function initialize() {
+function initMap() {
     var input = document.getElementById('location');
     let ccode = String($('#ccode').val());
     var autocomplete = new google.maps.places.Autocomplete(input, {
@@ -149,7 +149,6 @@ function initialize() {
       });
 }*/
 
-//initMap();
 
   
 
