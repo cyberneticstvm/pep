@@ -18,7 +18,7 @@
                                 @error('email')
                                 <small class="text-danger">{{ $errors->first('email') }}</small>
                                 @enderror
-                                {{ html()->email('email', old('email'))->class('form-control')->placeholder('Enter Email')->required }}
+                                {{ html()->email('email', old('email'))->class('form-control')->placeholder('Enter Email')->required() }}
                                 <div class="icon">
                                     <i class="ri-mail-line"></i>
                                 </div>
