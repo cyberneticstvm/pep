@@ -46,13 +46,12 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
     ->middleware('throttle:6,1')
     ->name('verification.send');
-Route::get('verifyEmail', [ProfileController::class, 'verifyEmail'])->name('verify.email');
 Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-    ->middleware(['auth', 'throttle:6,1'])
+    ->middleware(['auth', 'signed', 'throttle:6,1'])
     ->name('verification.verify');
 
 Route::middleware(['web', 'auth', 'email'])->group(function () {
-
+    Route::get('verifyEmail', [ProfileController::class, 'verifyEmail'])->name('verify.email');
     Route::prefix('user')->controller(WebController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('dashboard');
     });
