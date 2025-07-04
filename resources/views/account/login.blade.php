@@ -48,7 +48,7 @@
                                         Remember me
                                     </label>
                                 </div>
-                                <a href="forgot-password.html" class="forgot-password">
+                                <a href="{{ route('password.request') }}" class="forgot-password">
                                     Forgot your password?
                                 </a>
                             </div>
