@@ -55,8 +55,8 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label class="req">Your Password</label>
-                                @error('password_confirmation')
-                                <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
+                                @error('password')
+                                <small class="text-danger">{{ $errors->first('password') }}</small>
                                 @enderror
                                 {{ html()->password('password', old('password'))->class('form-control')->placeholder('******') }}
                                 <div class="icon">

@@ -57,4 +57,9 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    function verifyEmail(): View
+    {
+        return view('account.verify-email');
+    }
 }
