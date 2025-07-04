@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{ html()->submit("Register")->class("default-btn btn-submit") }}
+                        {{ html()->submit("Update")->class("default-btn btn-submit") }}
                         {{ html()->form()->close() }}
                     </div>
                 </div>
