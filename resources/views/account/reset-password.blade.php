@@ -1,39 +1,57 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
-
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@extends("base")
+@section("content")
+<!-- Start Profile Authentication Area -->
+<div class="profile-authentication-area ptb-50">
+    <div class="container">
+        <div class="page-banner-content">
+            <h2>Update Password</h2>
+            <h4>Unlock Your Dream Property! Register Now to Access Exclusive Listings and Personalized Property Alerts</h4>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="profile-authentication-inner mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12">
+                    <div class="profile-authentication-box">
+                        <div class="content">
+                            <h3>Update Password</h3>
+                        </div>
+                        {{ html()->form('POST', route('password.store'))->class('authentication-form')->open() }}
+                        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label class="req">Email Address</label>
+                                @error('email')
+                                <small class="text-danger">{{ $errors->first('email') }}</small>
+                                @enderror
+                                {{ html()->email('email', old('email', $request->email))->class('form-control')->placeholder('Enter Email') }}
+                                <div class="icon">
+                                    <i class="ri-mail-line"></i>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="req">Your Password</label>
+                                @error('password')
+                                <small class="text-danger">{{ $errors->first('password') }}</small>
+                                @enderror
+                                {{ html()->password('password', old('password'))->class('form-control')->placeholder('******') }}
+                                <div class="icon">
+                                    <i class="ri-lock-line"></i>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="req">Confirm Password</label>
+                                {{ html()->password('password_confirmation', old('password_confirmation'))->class('form-control')->placeholder('******') }}
+                                <div class="icon">
+                                    <i class="ri-lock-line"></i>
+                                </div>
+                            </div>
+                        </div>
+                        {{ html()->submit("Register")->class("default-btn btn-submit") }}
+                        {{ html()->form()->close() }}
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</div>
+<!-- End Profile Authentication Area -->
+@endsection
