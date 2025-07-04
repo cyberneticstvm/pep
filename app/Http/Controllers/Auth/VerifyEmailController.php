@@ -20,9 +20,9 @@ class VerifyEmailController extends Controller
                 return redirect()->intended(route('dashboard', absolute: false) . '?verified=1');
             }
 
-            if ($request->user()->markEmailAsVerified()) {
+            /*if ($request->user()->markEmailAsVerified()) {
                 event(new Verified($request->user()));
-            }
+            }*/
         } catch (Exception $e) {
             return redirect()->route('verify.email')->with("error", "You should have logged in first to verify your email id.");
         }
