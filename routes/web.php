@@ -23,7 +23,6 @@ Route::middleware(['web'])->group(function () {
     });
     Route::post('register', [RegisteredUserController::class, 'store']);
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-    Route::get('verifyEmail', [ProfileController::class, 'verifyEmail'])->name('verify.email');
 
     Route::get('featured/category', function () {
         return view('property.category');
@@ -52,6 +51,7 @@ Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
     ->name('verification.verify');
 
 Route::middleware(['web', 'auth', 'email'])->group(function () {
+    Route::get('verifyEmail', [ProfileController::class, 'verifyEmail'])->name('verify.email');
     Route::prefix('user')->controller(WebController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('dashboard');
     });
